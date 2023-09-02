@@ -1,3 +1,7 @@
-export const ImageItem = () => {
-  return <div>ImageItem</div>;
+export const ImageGalleryItem = ({ url }) => {
+  return (
+    <>
+      <img src={url} alt="" />
+    </>
+  );
 };

@@ -1,16 +1,18 @@
-export const Searchbar = () => {
+export const Searchbar = ({ changeQuery }) => {
   return (
-    <header class="searchbar">
-      <form class="form">
-        <button type="submit" class="button">
-          <span class="button-label">Search</span>
+    <header>
+      <form onSubmit={evt => {
+        evt.preventDefault();
+        changeQuery(evt.target.elements.query.value);
+        evt.target.reset();
+      }}>
+        <button type="submit">
+          <span>Search</span>
         </button>
 
         <input
-          class="input"
           type="text"
-          autocomplete="off"
-          autofocus
+          name="query"
           placeholder="Search images and photos"
         />
       </form>
