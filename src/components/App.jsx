@@ -5,6 +5,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { fetchImages } from './api/fetch';
 import { Spinner } from './Spinner/Spinner';
 
+
 export class App extends Component {
   state = {
     query: '',
@@ -22,22 +23,26 @@ export class App extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
-    const query = this.state.query.slice(
-      this.state.query.indexOf('/') + 1,
-      this.state.query.length
-    );
+    try {
+      const query = this.state.query.slice(
+        this.state.query.indexOf('/') + 1,
+        this.state.query.length
+      );
 
-    if (
-      prevState.query !== this.state.query ||
-      prevState.page !== this.state.page
-    ) {
-      this.setState({ loading: true });
+      if (
+        prevState.query !== this.state.query ||
+        prevState.page !== this.state.page
+      ) {
+        this.setState({ loading: true });
 
-      const images = await fetchImages(query, this.state.page);
-      this.setState(prevState => ({
-        images: [...prevState.images, ...images.hits],
-        loading: false,
-      }));
+        const images = await fetchImages(query, this.state.page);
+        this.setState(prevState => ({
+          images: [...prevState.images, ...images.hits],
+          loading: false,
+        }));
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
