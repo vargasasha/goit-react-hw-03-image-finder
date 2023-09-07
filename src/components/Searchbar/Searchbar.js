@@ -1,4 +1,4 @@
-import styles from "../../css/styles.module.css" 
+import styles from '../../css/styles.module.css';
 
 export const Searchbar = ({ changeQuery }) => {
   return (

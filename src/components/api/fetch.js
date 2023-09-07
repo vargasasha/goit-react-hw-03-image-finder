@@ -17,17 +17,3 @@ export const fetchImages = async (query, page ) => {
     const response = await axios.get(axios.defaults.baseURL, options);
   return response.data;
 };
-
-// async function pixabay(query, page) {
-//   const BASE_URL = 'https://pixabay.com/api/';
-
-//   try {
-//     const response = await axios.get(BASE_URL, options);
-
-//     message(response.data.hits.length, response.data.total);
-
-//     createMarkup(response.data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
